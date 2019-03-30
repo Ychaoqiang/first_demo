@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //原型链继承
+    // function Student(name,age,num) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.num = num;
+    // }
+    // function Person() {
+    //     this.foot = 2;
+    //     this.head = 1;
+    // }
+    // // Student.prototype = new Person();
+    // Student.prototype = Person.prototype;
+    // // Student.prototype.constructor = Student;
+    // var stu = new Student('小红',18,'001');
+    // alert(stu.foot);
+    // alert(stu.name);
+    // alert(stu.num);
+    // console.log(Person);
+    // console.log(Student);
+
+
+
+
+
+    //直接继承
+    // function Student(name,age,num) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.num = num;
+    // }
+    // function Person() {}
+    // Person.prototype.foot = 2;
+    // Person.prototype.head = 1;
+    //
+    // Student.prototype = Person.prototype;
+    // Student.prototype.constructor = Student;
+    // var stu = new Student('小红',18,'001');
+    // alert(stu.foot);
+    // alert(stu.name);
+    // alert(stu.num);
+    // console.log(Student.prototype.constructor);
+    //
+    // // Student.prototype.foot = 5;
+    // console.log(Person.prototype);
+    // console.log(Student);
+
+
+
+
+
+
+    //空对象作为中介
+    // function Student(name,age,num) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.num = num;
+    // }
+    // function Person() {}
+    // Person.prototype.foot = 2;
+    // Person.prototype.head = 1;
+    //
+    // function F1() {}
+    //
+    // F1.prototype = Person.prototype;
+    // Student.prototype = new F1();
+    //
+    // // Student.prototype = Person.prototype;
+    // Student.prototype.constructor = Student;
+    // var stu = new Student('小红',18,'001');
+    // alert(stu.foot);
+    // alert(stu.name);
+    // alert(stu.num);
+    // console.log(Student.prototype.constructor);
+    //
+    // Student.prototype.foot = 5;
+    // console.log(Person.prototype);
+    // console.log(Student);
+
+
+
+    function Person(work,addres){
+        this.foot = 2;
+        this.head=1;
+        this.work = work;
+        this.addres = addres;
+    }
+    function Student(name,no,work,addres){
+        //Person.call(this);
+        Person.apply(this,[work,addres]);
+        this.name=name;
+        this.no=no;
+    }
+
+
+    var stu1 = new Student("张三","s001",'厨师','北京');
+
+    alert('两只脚'+stu1.foot);
+    alert('一个'+stu1.head);
+    alert('姓名'+stu1.name);
+    alert('编号'+stu1.no);
+    alert('职业'+stu1.work);
+    alert('地址'+stu1.addres);
+
+    var stu2 = new Student("李四","s002",'医生','上海');
+    document.write('姓名：'+stu2.name+'<br/>');
+    document.write('编号：'+stu2.no+'<br/>');
+    document.write('职业：'+stu2.work+'<br/>');
+    document.write('地址：'+stu2.addres+'<br/>');
+
+
+
+
+</script>
+</body>
+</html>
